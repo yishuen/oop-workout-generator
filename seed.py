@@ -41,6 +41,8 @@ def WORKOUT_BY_MUSCLE_GROUP(who, what, how_long, equipment):
 
 
 
+
+
 upperabs = Muscle("Upper Abs")
 lowerabs = Muscle("Lower Abs")
 obliques = Muscle("Obliques")
@@ -73,6 +75,7 @@ arms = MuscleGroup('Arms', [biceps, triceps, shoulders])
 upperbod = MuscleGroup('Upper Body', [chest, shoulders, biceps, triceps])
 lowerbod = MuscleGroup('Lower Body', [glutes, thighs])
 
+
 me = Person('Me', [squats, sumos])
 kimmy = Person('Kimmy', [rows, bicepcurls])
 titus = Person('Titus', [crunches, sideplank])
@@ -81,3 +84,24 @@ lillian = Person('Lillian', [jackknives, bikecrunch])
 # def WORKOUT_BY_SPECIFIC_MUSCLES(who, what, when, equipment):
 #
 #
+#     @classmethod
+#     def exercises_without_equipment(cls, exercises): #Exercise class method
+#         return list(filter(lambda e: e.equipment == None, exercises))
+#
+#
+#     def acceptable_exercises(self, exercises): #Person instance method
+#         return list(filter(lambda n: n not in self.nogos, exercises))
+#
+#
+#     def musclegroup_exercises(self, exercises): #MuscleGroup instance method
+#         return list(filter(lambda e: e in self.muscles, exercises))
+
+
+
+
+# def filter_by_muscle_group(what, remaining_exercises):
+#     target_muscles = []
+#     for musclegroup in what:
+#         target_muscles += what.muscles #now we have a list of muscles to target!
+#
+#     okgos = list(filter(lambda n: , remaining_exercises))
