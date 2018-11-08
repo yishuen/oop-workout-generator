@@ -28,11 +28,10 @@ class Exercise:
 
     @classmethod
     def gimme_gains(cls, workout):
-        titles = []
-        muscles = []
-        stuff = []
-        for ex in workout:
-            titles.append(ex.name)
-            if ex.equipment != None:
-                stuff.append(ex.equipment)
-        return "Your Workout: " + ', '.join(titles) + ". || Stuff You'll Need: " + ", ".join(set(stuff))
+        titles = list(map(lambda ex: ex.name, workout))
+        exercises_with_stuff = list(filter(lambda ex: ex.equipment != None, workout))
+        stuff = list(map(lambda s: s.equipment, exercises_with_stuff))
+        if stuff == []:
+            return "Your Workout: " + ', '.join(titles)
+        else:
+            return "Your Workout: " + ', '.join(titles) + ". || Stuff You'll Need: " + ", ".join(set(stuff))

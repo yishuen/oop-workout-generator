@@ -4,32 +4,15 @@ from musclegroup import MuscleGroup
 from exercise import Exercise
 
 
-# Exercise: (name, targets, time, equipment = None)
-# # name = Person instance object
-# # targets = list of MuscleGroup instance objects
-# # time = integer, in minutes
-# # equipment = either a string, or None
-#
-# Person: (name, nogos)
-# # name = string
-# # nogos = list of Exercise instance objs that Person hates
-#
-# Muscle: (name)
-#
-# MuscleGroup: (name, muscles)
-# name = string
-# muscles = list of Muscle instance objects
-
-#GETGAINS_BY_MUSCLE_GROUP(me, [abs, arms], 10, False):
-
-def WORKOUT_BY_MUSCLE_GROUP(who, what, how_long, equipment):
+def GET_RIPPED(what, how_long, equipment, who = None):
     # first filter by equipment
     if equipment == False:
         exercises = Exercise.exercises_without_equipment(Exercise.all)
     else:
         exercises = Exercise.all
     # then filter by person
-    exercises = who.acceptable_exercises(exercises)
+    if who != None:
+        exercises = who.acceptable_exercises(exercises)
     # finally, filter by muscle group
     yes = []
     for group in what:
@@ -38,6 +21,7 @@ def WORKOUT_BY_MUSCLE_GROUP(who, what, how_long, equipment):
     workout = Exercise.populate_workout(how_long, exercises)
     # getting output...
     return Exercise.gimme_gains(workout)
+
 
 
 
@@ -80,28 +64,3 @@ me = Person('Me', [squats, sumos])
 kimmy = Person('Kimmy', [rows, bicepcurls])
 titus = Person('Titus', [crunches, sideplank])
 lillian = Person('Lillian', [jackknives, bikecrunch])
-
-# def WORKOUT_BY_SPECIFIC_MUSCLES(who, what, when, equipment):
-#
-#
-#     @classmethod
-#     def exercises_without_equipment(cls, exercises): #Exercise class method
-#         return list(filter(lambda e: e.equipment == None, exercises))
-#
-#
-#     def acceptable_exercises(self, exercises): #Person instance method
-#         return list(filter(lambda n: n not in self.nogos, exercises))
-#
-#
-#     def musclegroup_exercises(self, exercises): #MuscleGroup instance method
-#         return list(filter(lambda e: e in self.muscles, exercises))
-
-
-
-
-# def filter_by_muscle_group(what, remaining_exercises):
-#     target_muscles = []
-#     for musclegroup in what:
-#         target_muscles += what.muscles #now we have a list of muscles to target!
-#
-#     okgos = list(filter(lambda n: , remaining_exercises))
