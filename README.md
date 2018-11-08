@@ -26,3 +26,24 @@ the function to call is GET_RIPPED, which takes 4 arguments
 example inputs:
 * GET_RIPPED([arms, upperbod], 15, False)
 * GET_RIPPED([abs, lowerbod], 10, True, kimmy)
+
+#### Instance Objects (for your reference)
+
+Exercise: (name, targets, time, equipment = None)
+ - name: name of the exercise
+ - targets: which muscles the exercise targets, a list of
+   MuscleGroup instance objects
+ - time: how long this set will take
+ - equipment: either a string of what you'd need, or None
+
+Person: (name, nogos)
+ - name: person's name
+ - nogos: a list of Exercise instance objects, indicating
+   which exercises this person will never do
+
+Muscle: (name)
+ - name: muscle name
+
+MuscleGroup: (name, muscles)
+ - name: name of the muscle group
+ - muscles: list of Muscle instance objects
